@@ -6,7 +6,7 @@
 #    By: jinbekim <jinbekim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 18:47:30 by jinbekim          #+#    #+#              #
-#    Updated: 2021/04/02 20:54:42 by jinbekim         ###   ########.fr        #
+#    Updated: 2021/04/11 00:25:35 by jinbekim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ FUNC = ft_atoi \
 	ft_lstdelone \
 	ft_lstclear \
 	ft_lstiter \
-	ft_lstmap
+	ft_lstmap \
+	ft_lstprint
 
 OBJS = $(addprefix objs/, $(addsuffix .o, $(FUNC)))
 SRCS = $(addprefix srcs/, $(addsuffix .c, $(FUNC)))

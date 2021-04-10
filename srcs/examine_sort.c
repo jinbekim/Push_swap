@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	examine_sort(t_list *astack, int ac)
+int	examine_sort(t_list *astack)
 {
 	int	count;
 
@@ -12,7 +12,5 @@ int	examine_sort(t_list *astack, int ac)
 		astack = astack->next;
 		count++;
 	}
-	if (count == ac - 1)
-		return (0);
-	return (-1);
+	return (count);
 }

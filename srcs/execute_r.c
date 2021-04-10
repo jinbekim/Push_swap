@@ -27,22 +27,22 @@ static void	exe_reverse_rotate(t_list **stack)
 	ft_lstadd_front(stack, tmp);
 }
 
-void	execute_r(t_list **astack, t_list **bstack, t_list *inst)
+void	execute_r(t_list **astack, t_list **bstack, char *inst)
 {
-	if (ft_strncmp("ra\n", (char *)inst->content, 3))
+	if (ft_strncmp("ra", inst, 3) == 0)
 		exe_rotate(astack);
-	else if (ft_strncmp("rb\n", (char *)inst->content, 3))
+	else if (ft_strncmp("rb", inst, 3) == 0)
 		exe_rotate(bstack);
-	else if (ft_strncmp("rr\n", (char *)inst->content, 3))
+	else if (ft_strncmp("rr", inst, 3) == 0)
 	{
 		exe_rotate(astack);
 		exe_rotate(bstack);
 	}
-	else if (ft_strncmp("rra\n", (char *)inst->content, 4))
+	else if (ft_strncmp("rra", inst, 4) == 0)
 		exe_reverse_rotate(astack);
-	else if (ft_strncmp("rrb\n", (char *)inst->content, 4))
+	else if (ft_strncmp("rrb", inst, 4) == 0)
 		exe_reverse_rotate(bstack);
-	else if (ft_strncmp("rrr\n", (char *)inst->content, 4))
+	else if (ft_strncmp("rrr", inst, 4) == 0)
 	{
 		exe_reverse_rotate(astack);
 		exe_reverse_rotate(bstack);

@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+static void	init_list(t_list **astack, t_list **bstack, t_list **inst)
+{
+	*astack = NULL;
+	*bstack = NULL;
+	*inst = NULL;
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*astack;
@@ -8,10 +15,11 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	make_stack_a(av, &astack);
+	init_list(&astack, &bstack, &inst);
+	make_stack_list(av, &astack);
 	make_inst_list(&inst);
 	execute_inst(&astack, &bstack, inst);
-	if (examine_sort(astack, ac) == -1)
+	if (examine_sort(astack) != ac - 1)
 		write(1, "KO\n", 3);
 	else
 		write(1, "OK\n", 3);

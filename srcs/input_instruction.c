@@ -17,7 +17,7 @@ static int	is_valid_inst(char *inst)
 	return (-1);
 }
 
-void	make_inst_list(t_list **inst)
+void	input_instruction(t_list **inst)
 {
 	char	*instruct;
 	int		readline;

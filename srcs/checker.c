@@ -16,8 +16,8 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	init_list(&astack, &bstack, &inst);
-	make_stack_list(av, &astack);
-	make_inst_list(&inst);
+	input_stack(av, &astack);
+	input_instruction(&inst);
 	execute_inst(&astack, &bstack, inst);
 	if (examine_sort(astack) != ac - 1)
 		write(1, "KO\n", 3);

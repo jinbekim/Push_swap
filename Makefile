@@ -3,12 +3,13 @@ NAME2 = push_swap
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 FUNC = checker.c \
-	error_exit.c make_stack_list.c examine_sort.c \
+	program_exit.c input_stack.c examine_sort.c \
 	execute_p.c execute_r.c execute_s.c execute_inst.c \
-	make_inst_list.c
+	input_instruction.c
 FUNC2 = push_swap.c \
-	error_exit.c make_stack_list.c examine_sort.c \
-	execute_p.c execute_r.c execute_s.c execute_inst.c
+	program_exit.c input_stack.c examine_sort.c \
+	execute_p.c execute_r.c execute_s.c execute_inst.c \
+	rate_rank.c check_sorted_node.c
 
 C_SRCS = $(addprefix ./srcs/, $(FUNC))
 C_OBJS = $(addprefix ./objs/, $(FUNC:.c=.o))

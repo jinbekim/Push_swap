@@ -29,7 +29,7 @@ static int	check_int(char *str, int num)
 	return (0);
 }
 
-void	make_stack_list(char **av, t_list **astack)
+void	input_stack(char **av, t_list **astack)
 {
 	int		i;
 	int		*tmp;
@@ -45,10 +45,7 @@ void	make_stack_list(char **av, t_list **astack)
 		if (check_int(av[i], *tmp) == -1)
 			error_exit();
 		if (check_dupl(*astack, *tmp) == -1)
-		{
-			free(tmp);
 			error_exit();
-		}
 		new = ft_lstnew(tmp);
 		ft_lstadd_back(astack, new);
 	}

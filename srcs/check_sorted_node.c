@@ -1,55 +1,51 @@
 #include "push_swap.h"
 
-static t_list	*circle_last(t_list *node)
+static int	next_ascending(t_list *tmp, t_list *node, int count)
 {
-	t_list	*tmp;
-
-	tmp = node;
-	while (tmp->next != node)
-	{
-		tmp = tmp->next;
-	}
-	return (tmp);
-}
-
-static int	count_ascending(t_list *node)
-{
-	int		count;
-	t_list	*tmp;
-	t_list	*node_last;
-
-	count = 1;
-	tmp = node;
-	node_last = circle_last(node);
-	while (tmp != node_last)
+	while (tmp->next != node && tmp->next->rank < node->rank)
 	{
 		if (tmp->rank < tmp->next->rank)
 			count++;
-		else if (tmp->rank > tmp->next->rank && tmp->next->rank < node->rank)
-		{
-			tmp = tmp->next;
+		else
 			break ;
-		}
-		tmp = tmp->next;
-	}
-	while (tmp != node_last)
-	{
-		if (tmp->rank < tmp->next->rank && tmp->next->rank < node->rank)
-			count++;
 		tmp = tmp->next;
 	}
 	return (count);
 }
 
+static t_list	*count_ascending(t_list *node, int *count)
+{
+	t_list	*tmp;
+
+	(*count) = 1;
+	tmp = node;
+	while (tmp->next != node)
+	{
+		if (tmp->rank < tmp->next->rank)
+			(*count)++;
+		else if (tmp->next->rank < node->rank)
+		{
+			(*count)++;
+			tmp = tmp->next;
+			break ;
+		}
+		else
+			break ;
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
 int	check_how_many_sorted(t_list *start, t_list *node)
 {
 	t_list	*last;
+	t_list	*tmp;
 	int		count;
 
-	count = 0;
 	last = ft_lstlast(start);
 	last->next = start;
-	count = count_ascending(node);
+	tmp = count_ascending(node, &count);
+	count = next_ascending(tmp, node, count);
 	last->next = NULL;
 	return (count);
 }

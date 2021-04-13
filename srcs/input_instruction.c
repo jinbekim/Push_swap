@@ -17,11 +17,24 @@ static int	is_valid_inst(char *inst)
 	return (-1);
 }
 
+void	add_instruct_ntimes(t_list **inst, char *instruct, int	n)
+{
+	t_list	*new;
+	char	*tmp;
+
+	while (n > 0)
+	{
+		tmp = ft_strdup(instruct);
+		new = ft_lstnew(tmp);
+		ft_lstadd_back(inst, new);
+		n--;
+	}
+}
+
 void	input_instruction(t_list **inst)
 {
 	char	*instruct;
 	int		readline;
-	t_list	*new;
 
 	readline = 1;
 	while (readline == 1)
@@ -34,7 +47,7 @@ void	input_instruction(t_list **inst)
 		}
 		if (is_valid_inst(instruct) == -1)
 			error_exit();
-		new = ft_lstnew(instruct);
-		ft_lstadd_back(inst, new);
+		add_instruct_ntimes(inst, instruct, 1);
+		free(instruct);
 	}
 }

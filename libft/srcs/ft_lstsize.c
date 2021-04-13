@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinbekim <jinbekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 21:42:41 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/02 18:21:45 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/04/13 19:58:21 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ int	ft_lstsize(t_list *lst)
 	int		count;
 	t_list	*tmp;
 
-	count = 0;
-	if (lst != NULL)
+	count = 1;
+	tmp = lst;
+	if (lst == NULL)
+		return (0);
+	while (tmp->next)
 	{
 		count++;
-		tmp = lst;
-		while (tmp->next)
-		{
-			count++;
-			tmp = tmp->next;
-		}
+		tmp = tmp->next;
 	}
 	return (count);
 }

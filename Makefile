@@ -9,7 +9,8 @@ FUNC = checker.c \
 FUNC2 = push_swap.c \
 	program_exit.c input_stack.c examine_sort.c \
 	execute_p.c execute_r.c execute_s.c execute_inst.c \
-	rate_rank.c check_sorted_node.c
+	input_instruction.c \
+	rate_rank.c check_sorted_node.c arrange_stack.c
 
 C_SRCS = $(addprefix ./srcs/, $(FUNC))
 C_OBJS = $(addprefix ./objs/, $(FUNC:.c=.o))

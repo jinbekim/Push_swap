@@ -10,7 +10,7 @@ void	print_exit(t_list *inst)
 {
 	if (inst == NULL)
 		exit(0);
-	while (inst->next)
+	while (inst)
 	{
 		ft_putstr_fd((char *)inst->content, 1);
 		inst = inst->next;

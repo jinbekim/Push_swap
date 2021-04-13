@@ -12,11 +12,15 @@ void	execute_p(t_list **astack, t_list **bstack, char *inst);
 void	execute_r(t_list **astack, t_list **bstack, char *inst);
 void	execute_s(t_list **astack, t_list **bstack, char *inst);
 void	input_instruction(t_list **inst);
+void	add_instruct_ntimes(t_list **inst, char *instruct, int n);
 void	input_stack(char **av, t_list **astack);
 
 /*push_swap*/
 void	rate_rank(t_list *astack);
 void	check_longest_sorted_node(t_list *astack);
 int		check_how_many_sorted(t_list *start, t_list *node);
+void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst, int ac);
+void	btm_to_btm(t_list **stack, t_list **inst, t_list *chunk_head);
+t_list	*find_chunk_btm(t_list *stack, t_list *chunk_head);
 
 #endif

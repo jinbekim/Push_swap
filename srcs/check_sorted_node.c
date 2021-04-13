@@ -1,30 +1,57 @@
 #include "push_swap.h"
 
-static t_list	*count_ascending(t_list *node, int *count, int nodetail)
+static t_list	*circle_last(t_list *node)
 {
-	while ((node->rank < node->next->rank) && node->rank < nodetail)
+	t_list	*tmp;
+
+	tmp = node;
+	while (tmp->next != node)
 	{
-		(*count) += 1;
-		node = node->next;
+		tmp = tmp->next;
 	}
-	return (node->next);
+	return (tmp);
+}
+
+static int	count_ascending(t_list *node)
+{
+	int		count;
+	t_list	*tmp;
+	t_list	*node_last;
+
+	count = 1;
+	tmp = node;
+	node_last = circle_last(node);
+	while (tmp != node_last)
+	{
+		if (tmp->rank < tmp->next->rank)
+			count++;
+		else if (tmp->rank > tmp->next->rank && tmp->next->rank < node->rank)
+		{
+			tmp = tmp->next;
+			break ;
+		}
+		tmp = tmp->next;
+	}
+	while (tmp != node_last)
+	{
+		if (tmp->rank < tmp->next->rank && tmp->next->rank < node->rank)
+			count++;
+		tmp = tmp->next;
+	}
+	return (count);
 }
 
 int	check_how_many_sorted(t_list *start, t_list *node)
 {
 	t_list	*last;
-	t_list	*tmp;
 	int		count;
 
-	count = 1;
+	count = 0;
 	last = ft_lstlast(start);
 	last->next = start;
-	tmp = count_ascending(node, &count, INT32_MAX);
-	if (count == 1 && tmp->next->rank < node->rank)
-		count++;
-	tmp = count_ascending(tmp, &count, node->rank);
+	count = count_ascending(node);
 	last->next = NULL;
-	return	(count);
+	return (count);
 }
 
 void	check_longest_sorted_node(t_list *astack)

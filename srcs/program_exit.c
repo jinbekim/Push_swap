@@ -13,6 +13,7 @@ void	print_exit(t_list *inst)
 	while (inst)
 	{
 		ft_putstr_fd((char *)inst->content, 1);
+		ft_putchar_fd('\n', 1);
 		inst = inst->next;
 	}
 	exit(0);

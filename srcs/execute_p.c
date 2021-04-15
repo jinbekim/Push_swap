@@ -4,7 +4,7 @@ static void	exe_push(t_list **to, t_list **from)
 {
 	t_list	*tmp;
 
-	if (*from == NULL)
+	if (*from == NULL || from == NULL)
 		return ;
 	tmp = *from;
 	*from = (*from)->next;

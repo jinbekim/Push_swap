@@ -50,7 +50,7 @@ int	check_how_many_sorted(t_list *start, t_list *node)
 	return (count);
 }
 
-void	check_longest_sorted_node(t_list *astack)
+void	check_all_sorted_node_cnt(t_list *astack)
 {
 	t_list	*node;
 

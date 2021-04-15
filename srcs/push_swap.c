@@ -18,10 +18,14 @@ int	main(int ac, char **av)
 	init_stack(&astack, &bstack, &inst);
 	input_stack(av, &astack);
 	rate_rank(astack);
-	check_longest_sorted_node(astack);
-	// 회전 및 b스택 넘김, 청크값이 모두 같으면 회전시켜서 정렬, 혹은 그대로 반환
-	arrange_stack(&astack, &bstack, &inst, ac);
-	//commence_sort(&astack, &bstack, &inst); //회전시켜서 푸시 검사 회전시켜서 푸시 검사 .... 반복 각 노드마다 명령어 수를 구한뒤 제일적은것 실행?
+	check_all_sorted_node_cnt(astack);
+	arrange_stack(&astack, &bstack, &inst);
+	if (examine_sort(astack) == ac - 1)
+		print_exit(inst);
+	commence_sort(&astack, &bstack, &inst);
+	check_all_sorted_node_cnt(astack);
+	arrange_stack(&astack, &bstack, &inst);
+	compression_inst(&inst);
 	print_exit(inst);
 	return (0);
 }

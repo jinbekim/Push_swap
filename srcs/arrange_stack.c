@@ -1,33 +1,85 @@
 #include "push_swap.h"
 
-static t_list	*rotate_astack(t_list **astack, t_list **inst)
+static int	rotation_cost(int top, int btm)
 {
-	t_list	*chunkhead;
+	int	intersection;
 
-	chunkhead = select_chunk(*astack);
-	btm_to_btm(astack, inst, chunkhead);
-	return (chunkhead);
+	intersection = 0;
+	while (top != 0 && btm != 0)
+	{
+		top--;
+		btm--;
+		intersection++;
+	}
+	return (top + btm + intersection);
+}
+
+void	flush_bstack(t_list **astack, t_list **bstack, t_list **inst, int pivot)
+{
+	int	btm;
+	int	flush;
+
+	btm = pivot + ft_lstsize(*bstack) - 1;
+	flush = btm;
+	while (*bstack)
+	{
+		if ((*bstack)->rank == pivot)
+		{
+			add_and_execute_inst(astack, bstack, inst, "pa");
+			add_and_execute_inst(astack, bstack, inst, "ra");
+			pivot++;
+		}
+		if ((*bstack)->rank == btm)
+		{
+			add_and_execute_inst(astack, bstack, inst, "pa");
+			btm--;
+		}
+		if (rotation_cost(find_hold1(bstack, pivot, 1), find_hold1(\
+		bstack, btm, 1)) > rotation_cost(find_hold2(bstack, pivot, 1) \
+		, find_hold2(bstack, btm, 1)))
+			add_and_execute_inst(astack, bstack, inst, "rrb");
+		else
+			add_and_execute_inst(astack, bstack, inst, "rb");
+	}
+	while ((*astack)->rank >= flush)
+		add_and_execute_inst(astack, bstack, inst, "ra");
+}
+
+void	arrange_small_stack(t_list **astack, t_list **bstack, t_list **inst)
+{
+	while (examine_sort(*astack) != ft_lstsize(*astack))
+	{
+		if (ft_lstsize(*astack) == 3 || ft_lstsize(*astack) == 2)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
 }
 
 void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst)
 {
-	t_list	*chunkhead;
+	int		range;
+	int		pivot;
 
-	chunkhead = rotate_astack(astack, inst);
-	while (check_how_many_sorted(*astack, chunkhead) != ft_lstsize(*astack))
+	pivot = 0;
+	range = ft_lstsize(*astack) / 2;
+	while (range > 1)
 	{
-		if ((*astack)->rank == (*astack)->next->rank + 1)
-		{
-			add_instruct_ntimes(inst, "sa", 1);
-			execute_s(astack, bstack, "sa");
-		}
+		if ((*astack)->rank < pivot + range && (*astack)->rank >= pivot)
+			add_and_execute_inst(astack, bstack, inst, "pb");
 		else
+			rotate_astack(astack, inst, \
+			find_hold1(astack, pivot, range), find_hold2(astack, pivot, range));
+		if (ft_lstsize(*bstack) == range)
 		{
-			add_instruct_ntimes(inst, "pb", 1);
-			execute_p(astack, bstack, "pb");
+			flush_bstack(astack, bstack, inst, pivot);
+			range /= 2;
+			pivot += range;
 		}
-		chunkhead->chunk = check_how_many_sorted(*astack, chunkhead);
-		if (how_many_rot(*astack, find_chunk_btm(*astack, chunkhead)) != 0)
-			btm_to_btm(astack, inst, chunkhead);
 	}
+	arrange_small_stack(astack, bstack, inst);
 }

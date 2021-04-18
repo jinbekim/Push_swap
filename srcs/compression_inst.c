@@ -71,6 +71,8 @@ void	compression_inst(t_list **inst)
 	t_list	*tmp;
 
 	tmp = *inst;
+	if (!tmp)
+		return ;
 	while (tmp->next)
 	{
 		if (ft_strncmp((char *)tmp->content, "ra", 3) == 0)

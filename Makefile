@@ -10,8 +10,8 @@ FUNC2 = push_swap.c \
 	program_exit.c input_stack.c examine_sort.c \
 	execute_p.c execute_r.c execute_s.c execute_inst.c \
 	input_instruction.c \
-	rate_rank.c check_sorted_node.c arrange_stack.c \
-	arrange_stack2.c commence_sort.c compression_inst.c
+	rate_rank.c arrange_stack.c arrange_stack2.c \
+	compression_inst.c commence_sort.c
 
 C_SRCS = $(addprefix ./srcs/, $(FUNC))
 C_OBJS = $(addprefix ./objs/, $(FUNC:.c=.o))

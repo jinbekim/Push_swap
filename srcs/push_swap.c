@@ -18,12 +18,6 @@ int	main(int ac, char **av)
 	init_stack(&astack, &bstack, &inst);
 	input_stack(av, &astack);
 	rate_rank(astack);
-	check_all_sorted_node_cnt(astack);
-	arrange_stack(&astack, &bstack, &inst);
-	if (examine_sort(astack) == ac - 1)
-		print_exit(inst);
-	commence_sort(&astack, &bstack, &inst);
-	check_all_sorted_node_cnt(astack);
 	arrange_stack(&astack, &bstack, &inst);
 	compression_inst(&inst);
 	print_exit(inst);

@@ -30,13 +30,9 @@ void	compression_inst(t_list **inst)
 	while (tmp->next)
 	{
 		if (ft_strncmp((char *)tmp->content, "ra", 3) == 0)
-		{
 			find_pare(tmp, "rb");
-		}
 		else if (ft_strncmp((char *)tmp->content, "rb", 3) == 0)
-		{
 			find_pare(tmp, "ra");
-		}
 		tmp = tmp->next;
 	}
 }

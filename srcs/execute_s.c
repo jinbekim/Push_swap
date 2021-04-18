@@ -3,14 +3,13 @@
 static void	exe_swap(t_list **stack)
 {
 	t_list	*tmp;
-	int		*tmp2;
 
-	tmp = *stack;
-	if (tmp->next == NULL)
+	if (!(*stack)->next)
 		return ;
-	tmp2 = (int *)tmp->content;
-	tmp->content = tmp->next->content;
-	tmp->next->content = tmp2;
+	tmp = (*stack)->next;
+	(*stack)->next = tmp->next;
+	tmp->next = *stack;
+	*stack = tmp;
 }
 
 void	execute_s(t_list **astack, t_list **bstack, char *inst)

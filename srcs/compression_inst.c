@@ -17,6 +17,7 @@ static void	find_pare(t_list *tmp, char *pare)
 			tmp2->next = tmp3->next;
 			free(tmp3->content);
 			free(tmp3);
+			break ;
 		}
 		tmp2 = tmp2->next;
 	}
@@ -39,6 +40,7 @@ static void	find_pare2(t_list *tmp, char *pare)
 			tmp2->next = tmp3->next;
 			free(tmp3->content);
 			free(tmp3);
+			break ;
 		}
 		tmp2 = tmp2->next;
 	}
@@ -61,6 +63,7 @@ static void	find_pare3(t_list *tmp, char *pare)
 			tmp2->next = tmp3->next;
 			free(tmp3->content);
 			free(tmp3);
+			break ;
 		}
 		tmp2 = tmp2->next;
 	}

@@ -55,6 +55,25 @@ void	arrange_small_stack(t_list **astack, t_list **bstack, t_list **inst)
 	}
 }
 
+static int	to_zero(t_list **astack)
+{
+	t_list	*tmp;
+	int		cnt;
+
+	cnt = 0;
+	tmp = *astack;
+	while (tmp)
+	{
+		if (tmp->rank == 0)
+			break ;
+		cnt++;
+		tmp = tmp->next;
+	}
+	if (cnt <= 3)
+		return (0);
+	return (cnt / 2);
+}
+
 void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst)
 {
 	int		range;
@@ -71,9 +90,12 @@ void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst)
 			find_hold1(astack, pivot, range), find_hold2(astack, pivot, range));
 		if (ft_lstsize(*bstack) == range)
 		{
+			if (pivot != 0)
+				while (ft_lstlast(*astack)->rank != pivot - 1)
+					add_and_execute_inst(astack, bstack, inst, "rra");
 			flush_bstack(astack, bstack, inst, pivot);
 			pivot += range;
-			range /= 2;
+			range = to_zero(astack);
 		}
 	}
 	arrange_small_stack(astack, bstack, inst);

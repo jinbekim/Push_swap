@@ -23,7 +23,6 @@ t_list	*select_chunk(t_list *astack);
 void	compression_inst(t_list **inst);
 void	add_and_execute_inst(\
 t_list **astack, t_list **bstack, t_list **inst, char *instruct);
-void	rotate_astack(t_list **stack, t_list **inst, int ra, int rra);
 void	flush_bstack(\
 t_list **astack, t_list **bstack, t_list **inst, int pivot);
 int		find_hold1(t_list **stack, int pivot, int range);

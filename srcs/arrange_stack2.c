@@ -33,19 +33,47 @@ int	find_hold2(t_list **stack, int pivot, int range)
 	return (ft_lstsize(fm_btm));
 }
 
-void	rotate_astack(t_list **stack, t_list **inst, int ra, int rra)
+static int	rotation_cost(int top, int btm)
 {
-	while (ra != 0 && rra != 0)
+	int	intersection;
+
+	intersection = 0;
+	while (top != 0 && btm != 0)
 	{
-		if (ra < rra)
-		{
-			add_and_execute_inst(stack, NULL, inst, "ra");
-			ra--;
-		}
-		else
-		{
-			add_and_execute_inst(stack, NULL, inst, "rra");
-			rra--;
-		}
+		top--;
+		btm--;
+		intersection++;
 	}
+	return (top + btm + intersection);
+}
+
+void	flush_bstack(t_list **astack, t_list **bstack, t_list **inst, int pivot)
+{
+	int	btm;
+	int	flush;
+
+	btm = pivot + ft_lstsize(*bstack) - 1;
+	flush = btm;
+	while (*bstack)
+	{
+		if ((*bstack)->rank == pivot)
+		{
+			add_and_execute_inst(astack, bstack, inst, "pa");
+			add_and_execute_inst(astack, bstack, inst, "ra");
+			pivot++;
+		}
+		else if ((*bstack)->rank == btm)
+		{
+			add_and_execute_inst(astack, bstack, inst, "pa");
+			btm--;
+		}
+		else if (rotation_cost(find_hold1(bstack, pivot, 1), find_hold1(\
+		bstack, btm, 1)) > rotation_cost(find_hold2(bstack, pivot, 1) \
+		, find_hold2(bstack, btm, 1)))
+			add_and_execute_inst(astack, bstack, inst, "rrb");
+		else
+			add_and_execute_inst(astack, bstack, inst, "rb");
+	}
+	while (flush-- > btm)
+		add_and_execute_inst(astack, bstack, inst, "ra");
 }

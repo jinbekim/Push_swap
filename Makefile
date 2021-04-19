@@ -5,7 +5,7 @@ CFLAGS = -Wall -Werror -Wextra
 FUNC = checker.c \
 	program_exit.c input_stack.c examine_sort.c \
 	execute_p.c execute_r.c execute_s.c execute_inst.c \
-	input_instruction.c
+	input_instruction.c rate_rank.c
 FUNC2 = push_swap.c \
 	program_exit.c input_stack.c examine_sort.c \
 	execute_p.c execute_r.c execute_s.c execute_inst.c \

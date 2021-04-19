@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 	init_list(&astack, &bstack, &inst);
 	input_stack(av, &astack);
 	input_instruction(&inst);
+	rate_rank(astack);
 	execute_inst(&astack, &bstack, inst);
 	if (examine_sort(astack) != ac - 1)
 		write(1, "KO\n", 3);

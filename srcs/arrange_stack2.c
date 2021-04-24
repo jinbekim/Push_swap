@@ -1,36 +1,24 @@
 #include "push_swap.h"
 
-int	find_hold1(t_list **stack, int pivot, int range)
+void	last_rotate(t_list **astack, t_list **bstack, t_list **inst)
 {
-	t_list	*tmp;
-	int		cnt;
+	int		btmrank;
+	t_list	*btm;
 
-	tmp = *stack;
-	cnt = 0;
-	while (tmp)
+	btmrank = ft_lstsize(*astack);
+	btm = *astack;
+	while (btm)
 	{
-		if (tmp->rank < pivot + range && pivot <= tmp->rank)
-			return (cnt);
-		cnt++;
-		tmp = tmp->next;
+		if (btm->rank == btmrank)
+			break ;
+		btm = btm->next;
 	}
-	return (cnt);
-}
-
-int	find_hold2(t_list **stack, int pivot, int range)
-{
-	t_list	*tmp;
-	t_list	*fm_btm;
-
-	tmp = *stack;
-	fm_btm = NULL;
-	while (tmp)
-	{
-		if (tmp->rank < pivot + range && pivot <= tmp->rank)
-			fm_btm = tmp;
-		tmp = tmp->next;
-	}
-	return (ft_lstsize(fm_btm));
+	if (ft_lstsize(btm) > (ft_lstsize(*astack) - ft_lstsize(btm)))
+		while ((*astack)->rank != 0)
+			add_and_execute_inst(astack, bstack, inst, "ra");
+	else
+		while ((*astack)->rank != 0)
+			add_and_execute_inst(astack, bstack, inst, "rra");
 }
 
 static int	rotation_cost(int top, int btm)
@@ -69,17 +57,19 @@ void	flush_bstack(t_list **astack, t_list **bstack, t_list **inst, int pivot)
 	{
 		if ((*bstack)->rank == pivot)
 			pivot_handle(astack, bstack, inst, &pivot);
-		else if ((*bstack)->rank == btm)
-		{
+		else if ((*bstack)->rank == btm && btm--)
 			add_and_execute_inst(astack, bstack, inst, "pa");
-			btm--;
-		}
-		else if (rotation_cost(find_hold1(bstack, pivot, 1), find_hold1(\
-		bstack, btm, 1)) > rotation_cost(find_hold2(bstack, pivot, 1) \
-		, find_hold2(bstack, btm, 1)))
+		else if (\
+		rotation_cost(find_hold1(bstack, pivot, 1), find_hold1(bstack, btm, 1)) > \
+		rotation_cost(find_hold2(bstack, pivot, 1), find_hold2(bstack, btm, 1)))
 			add_and_execute_inst(astack, bstack, inst, "rrb");
 		else
 			add_and_execute_inst(astack, bstack, inst, "rb");
+	}
+	if (check_how_many_sorted(*astack, *astack) == ft_lstsize(*astack))
+	{
+		last_rotate(astack, bstack, inst);
+		return ;
 	}
 	while (flush-- > btm)
 		add_and_execute_inst(astack, bstack, inst, "ra");

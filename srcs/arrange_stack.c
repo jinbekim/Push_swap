@@ -21,7 +21,9 @@ static void	without_rra(t_list **astack, t_list **bstack, t_list **inst)
 {
 	while ((*astack)->rank != 0)
 	{
-		if ((*astack)->rank == ft_lstlast(*astack)->rank + 1)
+		if (check_how_many_sorted(*astack, *astack) == ft_lstsize(*astack))
+			last_rotate(astack, bstack, inst);
+		else if ((*astack)->rank == ft_lstlast(*astack)->rank + 1)
 			add_and_execute_inst(astack, bstack, inst, "ra");
 		else if ((*astack)->rank == ft_lstlast(*astack)->rank + 2)
 			add_and_execute_inst(astack, bstack, inst, "sa");
@@ -35,24 +37,24 @@ static void	without_rra(t_list **astack, t_list **bstack, t_list **inst)
 	}
 }
 
-void	arrange_small_stack(t_list **astack, t_list **bstack, t_list **inst)
+static void	arrange_small_stack(t_list **astack, t_list **bstack, t_list **inst)
 {
-	while (examine_sort(*astack) != ft_lstsize(*astack))
+	if (examine_sort(*astack) == ft_lstsize(*astack))
+		return ;
+	if (ft_lstsize(*astack) == 3 || ft_lstsize(*astack) == 2)
 	{
-		if (ft_lstsize(*astack) == 3 || ft_lstsize(*astack) == 2)
-		{
-			if ((*astack)->rank == 2)
-				add_and_execute_inst(astack, bstack, inst, "ra");
-			if ((*astack)->rank == 1 && examine_sort(*astack) == 1)
-				add_and_execute_inst(astack, bstack, inst, "sa");
-			else if (examine_ascending(*astack) == 2)
-				add_and_execute_inst(astack, bstack, inst, "rra");
-			if ((*astack)->rank == 1 && examine_sort(*astack) == 1)
-				add_and_execute_inst(astack, bstack, inst, "sa");
-		}
-		else
-			without_rra(astack, bstack, inst);
+		rate_tmp_rank(*astack);
+		if ((*astack)->tmp_rank == 2)
+			add_and_execute_inst(astack, bstack, inst, "ra");
+		if ((*astack)->tmp_rank == 1 && examine_sort(*astack) == 1)
+			add_and_execute_inst(astack, bstack, inst, "sa");
+		else if (examine_ascending(*astack) == 2)
+			add_and_execute_inst(astack, bstack, inst, "rra");
+		if ((*astack)->rank == 1 && examine_sort(*astack) == 1)
+			add_and_execute_inst(astack, bstack, inst, "sa");
 	}
+	else
+		without_rra(astack, bstack, inst);
 }
 
 static int	to_zero(t_list **astack)
@@ -88,6 +90,8 @@ void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst)
 		else
 			rotate_astack(astack, inst, \
 			find_hold1(astack, pivot, range), find_hold2(astack, pivot, range));
+		if (ft_lstsize(*astack) <= 3)
+			arrange_small_stack(astack, bstack, inst);
 		if (ft_lstsize(*bstack) == range)
 		{
 			if (pivot != 0)

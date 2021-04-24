@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:50:12 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/12 16:57:59 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/04/24 21:32:31 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 {
 	void			*content;
 	int				rank;
-	int				chunk;
+	int				tmp_rank;
 	struct s_list	*next;
 }					t_list;
 

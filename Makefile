@@ -11,7 +11,7 @@ FUNC2 = push_swap.c \
 	execute_p.c execute_r.c execute_s.c execute_inst.c \
 	input_instruction.c \
 	rate_rank.c arrange_stack.c arrange_stack2.c \
-	compression_inst.c commence_sort.c
+	compression_inst.c commence_sort.c arrange_stack3.c
 
 C_SRCS = $(addprefix ./srcs/, $(FUNC))
 C_OBJS = $(addprefix ./objs/, $(FUNC:.c=.o))
@@ -36,9 +36,11 @@ $(NAME2) : $(P_OBJS)
 
 clean :
 	rm -f $(C_OBJS) $(P_OBJS)
+	$(MAKE) clean -C ./libft/
 
 fclean : clean
 	rm -f $(NAME) $(NAME2)
+	$(MAKE) fclean -C ./libft/
 
 re : fclean all
 

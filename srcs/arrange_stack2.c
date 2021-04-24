@@ -47,6 +47,17 @@ static int	rotation_cost(int top, int btm)
 	return (top + btm + intersection);
 }
 
+static void	pivot_handle(\
+t_list **astack, t_list **bstack, t_list **inst, int *pivot)
+{
+	if ((*bstack)->rank == (*pivot))
+	{
+		add_and_execute_inst(astack, bstack, inst, "pa");
+		add_and_execute_inst(astack, bstack, inst, "ra");
+		(*pivot)++;
+	}
+}
+
 void	flush_bstack(t_list **astack, t_list **bstack, t_list **inst, int pivot)
 {
 	int	btm;
@@ -57,11 +68,7 @@ void	flush_bstack(t_list **astack, t_list **bstack, t_list **inst, int pivot)
 	while (*bstack)
 	{
 		if ((*bstack)->rank == pivot)
-		{
-			add_and_execute_inst(astack, bstack, inst, "pa");
-			add_and_execute_inst(astack, bstack, inst, "ra");
-			pivot++;
-		}
+			pivot_handle(astack, bstack, inst, &pivot);
 		else if ((*bstack)->rank == btm)
 		{
 			add_and_execute_inst(astack, bstack, inst, "pa");

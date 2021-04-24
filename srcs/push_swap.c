@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 	init_stack(&astack, &bstack, &inst);
 	input_stack(av, &astack);
 	rate_rank(astack);
+	if (examine_sort(astack) == ac - 1)
+		print_exit(NULL);
 	arrange_stack(&astack, &bstack, &inst);
 	compression_inst(&inst);
 	print_exit(inst);

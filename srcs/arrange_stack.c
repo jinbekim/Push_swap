@@ -50,7 +50,7 @@ static void	arrange_small_stack(t_list **astack, t_list **bstack, t_list **inst)
 			add_and_execute_inst(astack, bstack, inst, "sa");
 		else if (examine_ascending(*astack) == 2)
 			add_and_execute_inst(astack, bstack, inst, "rra");
-		if ((*astack)->rank == 1 && examine_sort(*astack) == 1)
+		if ((*astack)->tmp_rank == 1 && examine_sort(*astack) == 1)
 			add_and_execute_inst(astack, bstack, inst, "sa");
 	}
 	else

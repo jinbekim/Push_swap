@@ -38,12 +38,10 @@ static int	rotation_cost(int top, int btm)
 static void	pivot_handle(\
 t_list **astack, t_list **bstack, t_list **inst, int *pivot)
 {
-	if ((*bstack)->rank == (*pivot))
-	{
-		add_and_execute_inst(astack, bstack, inst, "pa");
+	add_and_execute_inst(astack, bstack, inst, "pa");
+	if (ft_lstsize(*bstack) != 0)
 		add_and_execute_inst(astack, bstack, inst, "ra");
-		(*pivot)++;
-	}
+	(*pivot)++;
 }
 
 void	flush_bstack(t_list **astack, t_list **bstack, t_list **inst, int pivot)

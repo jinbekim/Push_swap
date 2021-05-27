@@ -4,17 +4,17 @@ B_NAME = checker
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-B_FUNC = checker.c \
+B_FUNC = main_checker.c \
 	program_exit.c input_stack.c examine_sort.c \
-	execute_p.c execute_r.c execute_s.c execute_inst.c \
-	input_instruction.c rate_rank.c
+	execute_p.c execute_r.c execute_s.c execute_switch.c \
+	input_inst.c rate_rank.c
 
-FUNC = push_swap.c \
+FUNC = main_pushswap.c \
 	program_exit.c input_stack.c examine_sort.c \
-	execute_p.c execute_r.c execute_s.c execute_inst.c \
-	input_instruction.c rate_rank.c \
-	arrange_stack.c arrange_stack2.c \
-	compression_inst.c commence_sort.c arrange_stack3.c
+	execute_p.c execute_r.c execute_s.c execute_switch.c \
+	input_inst.c rate_rank.c calculate_avrg.c\
+	arrange_stack.c pb_under_avrg.c pa_over_avrg.c \
+	compression_inst.c execute_inst.c init_chunk_num.c
 
 SRCS = $(addprefix ./srcs/, $(FUNC))
 OBJS = $(addprefix ./objs/, $(FUNC:.c=.o))

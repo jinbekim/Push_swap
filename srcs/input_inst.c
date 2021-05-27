@@ -31,7 +31,7 @@ void	add_instruct_ntimes(t_list **inst, char *instruct, int	n)
 	}
 }
 
-void	input_instruction(t_list **inst)
+void	input_inst(t_list **inst)
 {
 	char	*instruct;
 	int		readline;

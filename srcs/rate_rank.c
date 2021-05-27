@@ -25,15 +25,3 @@ void	rate_rank(t_list *astack)
 		tmp = tmp->next;
 	}
 }
-
-void	rate_tmp_rank(t_list *astack)
-{
-	t_list	*tmp;
-
-	tmp = astack;
-	while (tmp)
-	{
-		tmp->tmp_rank = count_rank(astack, *(int *)tmp->content);
-		tmp = tmp->next;
-	}
-}

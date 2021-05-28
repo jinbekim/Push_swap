@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "./push_swap.h"
 
 static void	init_stack(t_list **astack, t_list **bstack, t_list **inst)
 {

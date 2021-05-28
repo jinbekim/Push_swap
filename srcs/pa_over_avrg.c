@@ -76,3 +76,25 @@ int	pa_over_avrg(t_list **astack, t_list **bstack, t_list **inst)
 	}
 	return (0);
 }
+
+	// t_list *tmp = *bstack;
+	// t_list *tmp2 = *astack;
+	// while (tmp || tmp2)
+	// {
+	// 	if (tmp && tmp2)
+	// 	{
+	// 		printf("astack : %d, chunk : %d | bstack : %d, chunk : %d\n", tmp2->rank, tmp2->chunk_num, tmp->rank, tmp->chunk_num);
+	// 		tmp = tmp->next;
+	// 		tmp2 = tmp2->next;
+	// 	}
+	// 	else if (tmp)
+	// 	{
+	// 		printf("astack :   , chunk :   | bstack : %d, chunk : %d\n", tmp->rank, tmp->chunk_num);
+	// 		tmp = tmp->next;
+	// 	}
+	// 	else if (tmp2)
+	// 	{
+	// 		printf("astack : %d, chunk : %d | bstack :   , chunk :   \n", tmp2->rank, tmp2->chunk_num);
+	// 		tmp2 = tmp2->next;
+	// 	}
+	// }

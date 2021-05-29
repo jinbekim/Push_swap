@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 		return (0);
 	init_list(&astack, &bstack, &inst);
 	input_stack(av, &astack);
-	input_instruction(&inst);
+	input_inst(&inst);
 	rate_rank(astack);
 	execute_inst(&astack, &bstack, inst);
 	if (examine_sort(astack) != ac - 1)

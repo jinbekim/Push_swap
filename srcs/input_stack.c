@@ -20,6 +20,8 @@ static int	check_int(char *str, int num)
 		return (-1);
 	if (num == 0 && str[0] != '0' && str[0] != '+')
 		return (-1);
+	if (str[0] == '+' && str[1] == '\0')
+		return (-1);
 	while (*str)
 	{
 		if (ft_isdigit(*str) == 0 && *str != '+' && *str != '-')

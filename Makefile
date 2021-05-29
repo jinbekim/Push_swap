@@ -6,12 +6,12 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 B_FUNC = main_checker.c \
 	program_exit.c input_stack.c examine_sort.c \
-	execute_p.c execute_r.c execute_s.c execute_switch.c \
+	execute_p.c execute_r.c execute_s.c execute_inst.c \
 	input_inst.c rate_rank.c
 
 FUNC = main_pushswap.c \
 	program_exit.c input_stack.c examine_sort.c \
-	execute_p.c execute_r.c execute_s.c execute_switch.c \
+	execute_p.c execute_r.c execute_s.c execute_inst.c \
 	input_inst.c rate_rank.c calculate_avrg.c\
 	arrange_stack.c pb_under_avrg.c pa_over_avrg.c \
 	compression_inst.c execute_inst.c init_chunk_num.c
@@ -37,11 +37,11 @@ $(FT) :
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(LIBFT) $(DEBUG) $^ -o $@
 
-bonus : $(FT) $(B_OBJS)
+bonus : $(B_OBJS)
 	$(CC) $(CFLAGS) $(LIBFT) $(DEBUG) $^ -o $(B_NAME)
 
 clean :
-	rm -f $(C_OBJS) $(P_OBJS)
+	rm -f $(OBJS) $(B_OBJS)
 	$(MAKE) clean -C ./libft/
 
 fclean : clean

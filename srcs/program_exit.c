@@ -3,7 +3,7 @@
 void	error_exit(void)
 {
 	write(2, "Error\n", 7);
-	exit(0);
+	exit(1);
 }
 
 void	print_exit(t_list *inst)

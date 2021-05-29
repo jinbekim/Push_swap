@@ -24,6 +24,7 @@ typedef struct s_list
 	void			*content;
 	int				rank;
 	int				chunk_num;
+	struct s_list	*prev;
 	struct s_list	*next;
 }					t_list;
 

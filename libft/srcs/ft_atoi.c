@@ -19,7 +19,7 @@ static	int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atoi(const	char *s)
+int	ft_atoi(const char *s)
 {
 	size_t	i;
 	int		c;
@@ -38,11 +38,11 @@ int	ft_atoi(const	char *s)
 	}
 	while (ft_isdigit(s[i]))
 	{
+		c = (c * 10) + neg * (s[i] - '0');
 		if (c > 0 && neg < 0)
 			return (0);
 		if (c < 0 && neg > 0)
 			return (-1);
-		c = (c * 10) + neg * (s[i] - '0');
 		i++;
 	}
 	return (c);

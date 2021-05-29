@@ -8,6 +8,10 @@ static void	exe_push(t_list **to, t_list **from)
 		return ;
 	tmp = *from;
 	*from = (*from)->next;
+	if ((*from) != NULL)
+		(*from)->prev = NULL;
+	tmp->next = NULL;
+	tmp->prev = NULL;
 	ft_lstadd_front(to, tmp);
 }
 

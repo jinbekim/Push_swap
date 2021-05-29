@@ -7,13 +7,11 @@
 void	error_exit(void);
 void	print_exit(t_list *inst);
 int		examine_sort(t_list *astack);
-int		examine_ascending(t_list *astack);
 void	execute_inst(t_list **astack, t_list **bstack, t_list *inst);
 void	execute_p(t_list **astack, t_list **bstack, char *inst);
 void	execute_r(t_list **astack, t_list **bstack, char *inst);
 void	execute_s(t_list **astack, t_list **bstack, char *inst);
-void	input_instruction(t_list **inst);
-void	add_instruct_ntimes(t_list **inst, char *instruct, int n);
+void	input_inst(t_list **inst);
 void	input_stack(char **av, t_list **astack);
 
 /*push_swap*/
@@ -25,6 +23,7 @@ int		pb_under_avrg(\
 t_list **astack, t_list **bstack, t_list **inst, float avrg);
 int		pa_over_avrg(t_list **astack, t_list **bstack, t_list **inst);
 void	compression_inst(t_list **inst);
+void	add_instruct_ntimes(t_list **inst, char *instruct, int n);
 void	add_and_execute_inst(\
 t_list **astack, t_list **bstack, t_list **inst, char *instruct);
 

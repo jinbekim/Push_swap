@@ -4,27 +4,30 @@ static void	exe_rotate(t_list **stack)
 {
 	t_list	*tmp;
 
-	if ((*stack)->next == NULL)
+	if ((*stack) == NULL || (*stack)->next == NULL)
 		return ;
 	tmp = (*stack);
 	(*stack) = (*stack)->next;
+	(*stack)->prev = NULL;
+	tmp->prev = ft_lstlast(*stack);
 	tmp->next = NULL;
 	ft_lstadd_back(stack, tmp);
 }
 
 static void	exe_reverse_rotate(t_list **stack)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list	*last;
+	t_list	*first;
 
-	if ((*stack)->next == NULL)
+	if ((*stack) == NULL || (*stack)->next == NULL)
 		return ;
-	tmp = ft_lstlast((*stack));
-	tmp2 = *stack;
-	while (tmp2->next != tmp)
-		tmp2 = tmp2->next;
-	tmp2->next = NULL;
-	ft_lstadd_front(stack, tmp);
+	last = ft_lstlast((*stack));
+	last->next = *stack;
+	last->prev->next = NULL;
+	last->prev = NULL;
+	first = *stack;
+	first->prev = last;
+	ft_lstadd_front(stack, last);
 }
 
 void	execute_r(t_list **astack, t_list **bstack, char *inst)

@@ -8,7 +8,9 @@ static void	exe_swap(t_list **stack)
 		return ;
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
+	(*stack)->prev = tmp;
 	tmp->next = *stack;
+	tmp->prev = NULL;
 	*stack = tmp;
 }
 

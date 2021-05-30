@@ -1,5 +1,4 @@
 NAME = push_swap
-
 B_NAME = checker
 
 CC = gcc
@@ -39,8 +38,10 @@ $(FT) :
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(LIBFT) $(DEBUG) $^ -o $@
 
-bonus : $(B_OBJS)
-	$(CC) $(CFLAGS) $(LIBFT) $(DEBUG) $^ -o $(B_NAME)
+bonus : $(FT) $(B_NAME)
+
+$(B_NAME) : $(B_OBJS)
+	$(CC) $(CFLAGS) $(LIBFT) $(DEBUG) $^ -o $@
 
 clean :
 	rm -f $(OBJS) $(B_OBJS)

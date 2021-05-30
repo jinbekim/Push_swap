@@ -6,13 +6,13 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 22:10:20 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/02 18:26:30 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/05/30 20:22:18 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	has_newline(char *backup)
+int			has_newline(char *backup)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ int	has_newline(char *backup)
 	return (-1);
 }
 
-void	cut_with_newline(char **backup)
+void		cut_with_newline(char **backup)
 {
 	int		i;
 	char	*tmp;
@@ -45,7 +45,7 @@ void	cut_with_newline(char **backup)
 	free(tmp);
 }
 
-char	*ft_strjoin_free(char *s1, char *s2)
+char		*ft_strjoin_free(char *s1, char *s2)
 {
 	int		len1;
 	int		len2;

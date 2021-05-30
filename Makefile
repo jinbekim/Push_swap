@@ -3,11 +3,12 @@ NAME = push_swap
 B_NAME = checker
 
 CC = gcc
-# CFLAGS = -Wall -Werror -Wextra
-B_FUNC = main_checker.c \
-	program_exit.c input_stack.c examine_sort.c \
-	execute_p.c execute_r.c execute_s.c execute_inst.c \
-	input_inst.c rate_rank.c
+CFLAGS = -Wall -Werror -Wextra
+B_FUNC = main_checker_bonus.c \
+	program_exit_bonus.c input_stack_bonus.c examine_sort_bonus.c \
+	execute_p_bonus.c execute_r_bonus.c execute_s_bonus.c \
+	execute_inst_bonus.c \
+	input_inst_bonus.c rate_rank_bonus.c
 
 FUNC = main_pushswap.c \
 	program_exit.c input_stack.c examine_sort.c \
@@ -15,7 +16,7 @@ FUNC = main_pushswap.c \
 	input_inst.c rate_rank.c calculate_avrg.c\
 	arrange_stack.c pb_under_avrg.c pa_over_avrg.c \
 	compression_inst.c execute_inst.c init_chunk_num.c \
-	arrange_small_stack.c
+	arrange_small_stack.c push_sorted_chunk.c
 
 SRCS = $(addprefix ./srcs/, $(FUNC))
 OBJS = $(addprefix ./objs/, $(FUNC:.c=.o))

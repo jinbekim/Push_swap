@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rate_rank.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 18:16:47 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 18:23:27 by jinbekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	count_rank(t_list *stack, int num)
 {
-	int	count;
+	int		count;
 
 	count = 0;
 	while (stack)
@@ -14,7 +26,7 @@ static int	count_rank(t_list *stack, int num)
 	return (count);
 }
 
-void	rate_rank(t_list *astack)
+void		rate_rank(t_list *astack)
 {
 	t_list	*tmp;
 

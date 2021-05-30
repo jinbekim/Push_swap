@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_avrg.c                                   :+:      :+:    :+:   */
+/*   program_exit_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 18:16:05 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/05/30 18:16:05 by jinbekim         ###   ########.fr       */
+/*   Created: 2021/05/30 18:06:37 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 18:11:47 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-float	calculate_avrg(t_list *stack, int chunk_num)
+void	error_exit(void)
 {
-	float	sum;
-	int		times;
+	write(2, "Error\n", 7);
+	exit(1);
+}
 
-	sum = 0;
-	times = chunk_num;
-	if (!stack || !chunk_num)
-		return (0);
-	while (times--)
+void	print_exit(t_list *inst)
+{
+	if (inst == NULL)
+		exit(0);
+	while (inst)
 	{
-		sum += stack->rank;
-		stack = stack->next;
+		ft_putstr_fd((char *)inst->content, 1);
+		ft_putchar_fd('\n', 1);
+		inst = inst->next;
 	}
-	return (sum / chunk_num);
+	exit(0);
 }

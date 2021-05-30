@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_inst.c                                       :+:      :+:    :+:   */
+/*   input_inst_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 18:08:38 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/05/30 18:22:17 by jinbekim         ###   ########.fr       */
+/*   Created: 2021/05/30 18:08:32 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 18:26:48 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 static int	is_valid_inst(char *inst)
 {

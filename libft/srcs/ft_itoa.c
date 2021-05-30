@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 15:58:58 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/02 18:21:25 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/05/30 20:21:38 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	char	*ft_itoa_core(int n, int len, int token)
 	return (arr);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	int			tmp;
 	int			token;

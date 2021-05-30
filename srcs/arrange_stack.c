@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arrange_stack.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 18:05:22 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 19:55:52 by jinbekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	init_rest_chunk(t_list *stack)
@@ -23,7 +35,7 @@ static void	init_rest_chunk(t_list *stack)
 	}
 }
 
-void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst)
+void		arrange_stack(t_list **astack, t_list **bstack, t_list **inst)
 {
 	float	avrg;
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_stack.c                                      :+:      :+:    :+:   */
+/*   input_stack_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 18:16:28 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/05/30 18:25:45 by jinbekim         ###   ########.fr       */
+/*   Created: 2021/05/30 18:07:06 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 18:20:08 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 static int	check_dupl(t_list *stack, int num)
 {

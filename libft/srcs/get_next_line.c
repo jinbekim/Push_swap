@@ -6,13 +6,13 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 19:22:33 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/02 18:27:18 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/05/30 20:22:52 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	eof_return(int readsize, char **backup, char **line)
+static int		eof_return(int readsize, char **backup, char **line)
 {
 	if (!(*backup))
 	{
@@ -29,11 +29,11 @@ static int	eof_return(int readsize, char **backup, char **line)
 	return (readsize);
 }
 
-static char	*return_line(char *backup)
+static char		*return_line(char *backup)
 {
-	int		i;
-	int		j;
-	char	*arr;
+	int			i;
+	int			j;
+	char		*arr;
 
 	j = 0;
 	i = has_newline(backup);
@@ -49,11 +49,11 @@ static char	*return_line(char *backup)
 	return (arr);
 }
 
-int	get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	int				readsize;
-	char			buff[BUFFER_SIZE + 1];
-	static char		*backup[OPEN_MAX];
+	int			readsize;
+	char		buff[BUFFER_SIZE + 1];
+	static char	*backup[OPEN_MAX];
 
 	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || !line)
 		return (-1);

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_avrg.c                                   :+:      :+:    :+:   */
+/*   examine_sort_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 18:16:05 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/05/30 18:16:05 by jinbekim         ###   ########.fr       */
+/*   Created: 2021/05/30 18:07:28 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 20:24:16 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-float	calculate_avrg(t_list *stack, int chunk_num)
+int	examine_sort(t_list *astack)
 {
-	float	sum;
-	int		times;
+	int	count;
 
-	sum = 0;
-	times = chunk_num;
-	if (!stack || !chunk_num)
+	count = 1;
+	if (!astack)
 		return (0);
-	while (times--)
+	while (astack->next)
 	{
-		sum += stack->rank;
-		stack = stack->next;
+		if (astack->rank + 1 != astack->next->rank)
+			break ;
+		astack = astack->next;
+		count++;
 	}
-	return (sum / chunk_num);
+	return (count);
 }

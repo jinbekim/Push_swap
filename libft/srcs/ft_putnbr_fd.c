@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 20:08:04 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/02 18:22:16 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/05/30 20:21:32 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	void	ft_recursive(unsigned int n, int fd)
 	ft_putchar_fd((n % 10) + '0', fd);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	tmp;
 

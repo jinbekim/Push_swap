@@ -1,4 +1,16 @@
-#include "./push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_pushswap.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 18:16:31 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 20:16:27 by jinbekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 static void	init_stack(t_list **astack, t_list **bstack, t_list **inst)
 {
@@ -33,7 +45,7 @@ static void	ra_check(t_list *astack, t_list **inst)
 	}
 }
 
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_list	*astack;
 	t_list	*bstack;
@@ -52,3 +64,8 @@ int	main(int ac, char **av)
 	print_exit(inst);
 	return (0);
 }
+
+/*
+**	system("leaks push_swap > leaks_result; cat leaks_result |
+** grep leaked && rm -rf leaks_result");
+*/

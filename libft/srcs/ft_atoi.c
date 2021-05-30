@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinbekim <jinbekim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 22:35:34 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/04/07 00:06:14 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/05/30 20:21:23 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *s)
+int			ft_atoi(const char *s)
 {
 	size_t	i;
 	int		c;

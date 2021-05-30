@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   compression_inst.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 18:16:10 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 18:44:09 by jinbekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	find_pare(t_list *tmp, char *pare)
@@ -7,8 +19,8 @@ static void	find_pare(t_list *tmp, char *pare)
 
 	tmp2 = tmp;
 	while (tmp2->next && (ft_strncmp((char *)tmp2->content, "rr", 3) == 0 \
-	 || ft_strncmp((char *)tmp2->content, "ra", 3) == 0 \
-	 || ft_strncmp((char *)tmp2->content, "rb", 3) == 0))
+	|| ft_strncmp((char *)tmp2->content, "ra", 3) == 0 \
+	|| ft_strncmp((char *)tmp2->content, "rb", 3) == 0))
 	{
 		if (ft_strncmp((char *)tmp2->next->content, pare, 3) == 0)
 		{
@@ -31,8 +43,8 @@ static void	find_pare3(t_list *tmp, char *pare)
 
 	tmp2 = tmp;
 	while (tmp2->next && (ft_strncmp((char *)tmp2->content, "rrr", 4) == 0 \
-	 || ft_strncmp((char *)tmp2->content, "rra", 4) == 0 \
-	 || ft_strncmp((char *)tmp2->content, "rrb", 4) == 0))
+	|| ft_strncmp((char *)tmp2->content, "rra", 4) == 0 \
+	|| ft_strncmp((char *)tmp2->content, "rrb", 4) == 0))
 	{
 		if (ft_strncmp((char *)tmp2->next->content, pare, 4) == 0)
 		{
@@ -59,7 +71,8 @@ static void	change_tmp_ptr(t_list **inst, t_list **tmp, t_list *tmp2)
 	else
 	{
 		tmp2->prev->next = tmp2->next->next;
-		tmp2->next->next->prev = tmp2->prev;
+		if (tmp2->next->next)
+			tmp2->next->next->prev = tmp2->prev;
 		*tmp = tmp2->prev;
 	}
 }
@@ -74,7 +87,7 @@ static void	elimination(t_list **tmp, t_list **inst)
 	if (ft_strncmp((char *)tmp2->content, "pa", 3) == 0)
 		ft_strlcpy(pare, "pb", 3);
 	while (tmp2->next && (ft_strncmp((char *)tmp2->content, "pa", 3) == 0 \
-	 || ft_strncmp((char *)tmp2->content, "pb", 3) == 0))
+	|| ft_strncmp((char *)tmp2->content, "pb", 3) == 0))
 	{
 		if (ft_strncmp((char *)tmp2->next->content, pare, 3) == 0)
 		{
@@ -89,7 +102,7 @@ static void	elimination(t_list **tmp, t_list **inst)
 	}
 }
 
-void	compression_inst(t_list **inst)
+void		compression_inst(t_list **inst)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -106,7 +119,7 @@ void	compression_inst(t_list **inst)
 			if (tmp2 != tmp)
 				continue ;
 		}
-		else if (ft_strncmp((char *)tmp->content, "ra", 3) == 0)
+		if (ft_strncmp((char *)tmp->content, "ra", 3) == 0)
 			find_pare(tmp, "rb");
 		else if (ft_strncmp((char *)tmp->content, "rb", 3) == 0)
 			find_pare(tmp, "ra");

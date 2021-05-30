@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pb_under_avrg.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 18:23:35 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 20:11:15 by jinbekim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	find_target_rra(t_list *stack, float avrg, int chunk)
@@ -75,12 +87,15 @@ static void	return_stack(t_list **astack, t_list **inst)
 	}
 }
 
-int	pb_under_avrg(t_list **astack, t_list **bstack, t_list **inst, float avrg)
+int			pb_under_avrg(\
+t_list **astack, t_list **bstack, t_list **inst, float avrg)
 {
-	int	t_rra;
-	int	t_ra;
-	int	chunk;
+	int		t_rra;
+	int		t_ra;
+	int		chunk;
 
+	if (ft_lstsize(*astack) < 6 && ft_lstsize(*bstack) == 0)
+		avrg = 1.5;
 	chunk = (*astack)->chunk_num;
 	t_rra = find_target_rra(*astack, avrg, chunk);
 	t_ra = find_target_ra(*astack, avrg, chunk);

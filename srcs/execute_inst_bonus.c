@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_inst.c                                     :+:      :+:    :+:   */
+/*   execute_inst_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 18:10:50 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/05/30 18:19:07 by jinbekim         ###   ########.fr       */
+/*   Created: 2021/05/30 18:10:42 by jinbekim          #+#    #+#             */
+/*   Updated: 2021/05/30 18:21:04 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	add_and_execute_inst(\
 t_list **astack, t_list **bstack, t_list **inst, char *instruct)

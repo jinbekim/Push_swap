@@ -76,7 +76,7 @@ static void	elimination(t_list **tmp, t_list **inst)
 	while (tmp2->next && (ft_strncmp((char *)tmp2->content, "pa", 3) == 0 \
 	 || ft_strncmp((char *)tmp2->content, "pb", 3) == 0))
 	{
-		if (ft_strncmp((char *)tmp2->next->content, pare, 3) == 3)
+		if (ft_strncmp((char *)tmp2->next->content, pare, 3) == 0)
 		{
 			free(tmp2->content);
 			free(tmp2->next->content);

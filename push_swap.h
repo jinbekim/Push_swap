@@ -15,9 +15,13 @@ void	input_inst(t_list **inst);
 void	input_stack(char **av, t_list **astack);
 
 /*push_swap*/
+void	is_need_swap(t_list **stack, t_list **inst);
+
 float	calculate_avrg(t_list *stack, int chunk_num);
 void	rate_rank(t_list *astack);
 void	arrange_stack(t_list **astack, t_list **bstack, t_list **inst);
+void	arrange_small_stack(t_list **astack, t_list **bstack, t_list **inst);
+void	arrange_small_stack2(t_list **astack, t_list **bstack, t_list **inst);
 void	init_chunk_num(t_list *stack, int size);
 int		pb_under_avrg(\
 t_list **astack, t_list **bstack, t_list **inst, float avrg);

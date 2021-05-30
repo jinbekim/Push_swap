@@ -36,9 +36,37 @@ static int	find_target_rb(t_list *stack, float avrg)
 	return (target);
 }
 
+static void	find_bigger_num(t_list *bstack, int *t_rb, int *t_rrb)
+{
+	t_list *tmp;
+	int		rb;
+	int		rrb;
+	
+	rb = *t_rb;
+	rrb = *t_rrb;
+	while (bstack->next)
+	{
+		if (rb-- == 0)
+			tmp = bstack;
+		bstack = bstack->next;
+	}
+	while (bstack)
+	{
+		if (--rrb == 0)
+			break ;
+		bstack = bstack->prev;
+	}
+	if (tmp->rank > bstack->rank)
+		(*t_rrb)++;
+	else
+		(*t_rb)++;
+}
+
 static void	rotate_minimum(t_list **bstack, t_list **inst, int t_rb, int t_rrb)
 {
-	if (t_rb <= t_rrb)
+	if (t_rb == t_rrb)
+		find_bigger_num(*bstack, &t_rb, &t_rrb);
+	if (t_rb < t_rrb)
 	{
 		while (t_rb)
 		{
@@ -60,6 +88,7 @@ int	pa_over_avrg(t_list **astack, t_list **bstack, t_list **inst)
 	int		t_rrb;
 	int		t_rb;
 
+	arrange_small_stack2(astack, bstack, inst);
 	while (*bstack)
 	{
 		avrg = calculate_avrg(*bstack, ft_lstsize(*bstack));
@@ -73,28 +102,8 @@ int	pa_over_avrg(t_list **astack, t_list **bstack, t_list **inst)
 			t_rb = find_target_rb(*bstack, avrg);
 			t_rrb = find_target_rrb(*bstack, avrg, 0);
 		}
+		if ((*astack)->chunk_num == 2)
+			is_need_swap(astack, inst);
 	}
 	return (0);
 }
-
-	// t_list *tmp = *bstack;
-	// t_list *tmp2 = *astack;
-	// while (tmp || tmp2)
-	// {
-	// 	if (tmp && tmp2)
-	// 	{
-	// 		printf("astack : %d, chunk : %d | bstack : %d, chunk : %d\n", tmp2->rank, tmp2->chunk_num, tmp->rank, tmp->chunk_num);
-	// 		tmp = tmp->next;
-	// 		tmp2 = tmp2->next;
-	// 	}
-	// 	else if (tmp)
-	// 	{
-	// 		printf("astack :   , chunk :   | bstack : %d, chunk : %d\n", tmp->rank, tmp->chunk_num);
-	// 		tmp = tmp->next;
-	// 	}
-	// 	else if (tmp2)
-	// 	{
-	// 		printf("astack : %d, chunk : %d | bstack :   , chunk :   \n", tmp2->rank, tmp2->chunk_num);
-	// 		tmp2 = tmp2->next;
-	// 	}
-	// }

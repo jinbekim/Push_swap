@@ -33,9 +33,9 @@ static void	ra_check(t_list *astack, t_list **inst)
 	while (ft_strncmp((char *)tmp->content, "ra", 3) == 0)
 	{
 		ra_num++;
-		tmp = tmp->prev;
-		if (tmp == NULL)
+		if (tmp->prev == NULL)
 			break ;
+		tmp = tmp->prev;
 	}
 	if (size - ra_num < ra_num)
 	{

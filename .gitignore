@@ -1,2 +1,4 @@
 # to keep empty dir.
-./libft/objs/
+libft/objs/
+objs/
+.vscode

@@ -14,10 +14,8 @@
 
 static int	rrb_rotation_cost(t_list *bstack, int high, int low)
 {
-	int		rrb;
 	t_list	*tmp;
 
-	rrb = 0;
 	while (bstack)
 	{
 		if (bstack->rank == high || bstack->rank == low)

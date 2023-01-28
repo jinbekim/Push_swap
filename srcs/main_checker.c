@@ -24,6 +24,7 @@ int			main(int ac, char **av)
 	t_list	*astack;
 	t_list	*bstack;
 	t_list	*inst;
+	char	msg[100];
 
 	if (ac == 1)
 		return (0);
@@ -32,10 +33,13 @@ int			main(int ac, char **av)
 	input_inst(&inst);
 	rate_rank(astack);
 	execute_inst(&astack, &bstack, inst);
+	ft_strlcpy(msg, "inst: ", 100);
+	ft_strlcat(msg, ft_itoa(ft_lstsize(inst)), 100);
 	if (examine_sort(astack) != ac - 1)
-		write(1, "KO\n", 3);
+		ft_strlcat(msg, "\nKO\n", 100);
 	else
-		write(1, "OK\n", 3);
+		ft_strlcat(msg, "\nOK\n", 100);
+	write(1, msg, ft_strlen(msg));
 	ft_lstclear(&astack, free);
 	ft_lstclear(&bstack, free);
 	ft_lstclear(&inst, free);
